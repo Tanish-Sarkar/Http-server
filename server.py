@@ -11,7 +11,7 @@ def run_server(port=8000):
     try:
         httpd.serve_forever()
     except KeyboardInterrupt:
-        print("\n🛑 Shutting down the server gracefully...")
+        print("\nShutting down the server gracefully...")
         httpd.server_close()
         print("Server stopped.")
 
