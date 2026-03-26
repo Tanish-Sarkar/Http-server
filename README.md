@@ -24,3 +24,81 @@ mini_server/
 ├── server.py           # Server initialization, port binding, and execution
 ├── requirements.txt    # Documentation of zero-dependency architecture
 └── README.md           # Project documentation
+````
+
+-----
+
+## 🚀 Getting Started
+
+### 1\. Prerequisites
+
+Ensure you have Python 3.13+ installed on your system.
+
+### 2\. Setup
+
+It is best practice to run Python projects inside a virtual environment.
+
+```bash
+# Create a virtual environment
+python -m venv venv
+
+# Activate the virtual environment
+# On Windows:
+venv\Scripts\activate
+# On macOS/Linux:
+source venv/bin/activate
+```
+
+*(Note: Because this project uses only the standard library, `pip install -r requirements.txt` is not required, but the file is included to strictly define the zero-dependency environment.)*
+
+### 3\. Run the Server
+
+Start the server by executing the engine script:
+
+```bash
+python server.py
+```
+
+You should see output confirming the server is running on `http://localhost:8000`.
+
+-----
+
+## 📡 API Endpoints & Testing
+
+Once the server is running, you can interact with the following endpoints:
+
+| Method | Endpoint | Description | Response Type |
+| :--- | :--- | :--- | :--- |
+| `GET` | `/` | Returns the application home page. | `text/html` |
+| `GET` | `/api/status` | Returns a health check JSON payload. | `application/json` |
+| `POST` | `/submit` | Accepts data and returns a confirmation payload. | `application/json` |
+
+### Testing via Browser
+
+Open your favorite web browser and navigate to:
+
+  * **Home:** [http://localhost:8000](https://www.google.com/search?q=http://localhost:8000)
+  * **API Status:** [http://localhost:8000/api/status](https://www.google.com/search?q=http://localhost:8000/api/status)
+
+### Testing via Terminal (cURL)
+
+To test the POST route and ensure the server correctly handles incoming data, open a new terminal tab and run:
+
+```bash
+curl -X POST http://localhost:8000/submit \
+     -H "Content-Type: application/json" \
+     -d '{"name": "Test User", "project": "Mini Server"}'
+```
+
+**Expected Output:**
+
+```json
+{"message": "Data received successfully!", "data_received": "{\"name\": \"Test User\", \"project\": \"Mini Server\"}"}
+```
+
+-----
+
+## 🛑 Shutting Down
+
+To gracefully shut down the server, simply press `Ctrl + C` in the terminal where the server is running.
+
